@@ -1,0 +1,4 @@
+terraform eks/.terraform.lock.hcl
+terraform eks/.terraform
+Task1_Argo/argocd-example-apps
+Task1_Argo/argocd-example-apps
