@@ -1,6 +1,7 @@
-#IAM role with the EKS cluster policy
+#Create an IAM Role
+#Allow EKS to assume this role
 resource "aws_iam_role" "eksrole" {
-  name = "andy-eks-cluster-policy"
+  name = "${var.name_prefix}-cluster-policy"
 
   assume_role_policy = <<POLICY
 {
@@ -24,16 +25,11 @@ resource "aws_iam_role_policy_attachment" "myAmazonEKSClusterPolicy" {
 }
 
 resource "aws_eks_cluster" "mycluster" {
-  name     = "andy-cluster"
+  name     = "${var.name_prefix}-cluster"
   role_arn = aws_iam_role.eksrole.arn
 
   vpc_config {
-    subnet_ids = [
-      # aws_subnet.mysubnet1.id,
-      # aws_subnet.mysubnet2.id,
-      aws_subnet.mysubnet3.id,
-      aws_subnet.mysubnet4.id
-    ]
+    subnet_ids = var.subnet_ids
   }
 
   # Cluster wont be created until the proper iam role is ready

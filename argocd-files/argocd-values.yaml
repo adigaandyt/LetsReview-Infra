@@ -1,0 +1,22 @@
+# create a secrect with the argocd admin password
+configs:
+  secret:
+    createSecret: true
+    argocdServerAdminPassword: "$2b$12$/HZfU/g2aoHv89JxBHphVeAFIb6bf2S5fwiAsgr1s8z/XzxxHZ8Uq" # the password has to be bcrpyt hashed
+  params:
+    server.insecure: true
+
+# access argo with ingress and https
+server:
+  ingress:
+    enabled: true
+    annotations:
+      # cert-manager.io/cluster-issuer: "letsencrypt"
+    ingressClassName: nginx
+    hosts:
+      - ourlibargo.ddns.net
+    # tls:
+    #   - hosts:
+    #       - argocd.taskit.in
+    #     secretName: argocd.taskit.in-tls
+    # https: true
