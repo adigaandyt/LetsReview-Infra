@@ -6,17 +6,18 @@ configs:
   params:
     server.insecure: true
 
-# access argo with ingress and https
-server:
-  ingress:
-    enabled: true
-    annotations:
-      # cert-manager.io/cluster-issuer: "letsencrypt"
-    ingressClassName: nginx
-    hosts:
-      - ourlibargo.ddns.net
-    # tls:
-    #   - hosts:
-    #       - argocd.taskit.in
-    #     secretName: argocd.taskit.in-tls
-    # https: true
+# commented out to fix a bug 
+# # access argo with ingress and https
+# server:
+#   ingress:
+#     enabled: true
+#     annotations:
+#       # cert-manager.io/cluster-issuer: "letsencrypt"
+#     ingressClassName: nginx
+#     hosts:
+#       - ourlibargo.ddns.net
+#     # tls:
+#     #   - hosts:
+#     #       - argocd.taskit.in
+#     #     secretName: ------
+#     # https: true
