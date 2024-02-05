@@ -1,7 +1,8 @@
 # Infrastructure as Code for Our_Library
-## Overview
-This repository contains Terraform configurations for provisioning and managing the cloud infrastructure (EKS) required by the Our_Library WebApp.
+This repository contains Terraform configurations for provisioning and managing the cloud infrastructure (EKS) required by the [Our_Library](https://github.com/adigaandyt/Our_Library).
 It defines the infrastructure in a declarative manner, ensuring consistency, reproducibility, and version control for all cloud resources.
+Terraform Infrastructure as Code that deploys an EKS cluster and installs ArgoCD onto the cluster on deployment.
+It's a part of a CI/CD project for [Our_Library](https://github.com/adigaandyt/Our_Library), an app that gets deployed onto the EKS Cluster
 
 ## Prerequisites
 Before you begin, you will need:
