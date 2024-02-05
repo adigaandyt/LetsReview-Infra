@@ -74,6 +74,7 @@ Here is a very basic diagram of the architecture
 - **Cluster** : A Kubernetes cluster managed by AWS
 - **Node Group** : A node group with two EC2 nodes
 - **Load Balancer** : Automatically created by EKS
+- **EBS** : Elastic Block Store volumes automatically created by EKS and attached to EC2 nodes
 
 ### IAM Roles
 IAM Roles get created in the code and resources assume them
@@ -86,3 +87,6 @@ IAM Roles get created in the code and resources assume them
                     `AmazonEKS_CNI_Policy` : Allows the worker nodes to manage networking resources for pods using the Amazon VPC CNI plugin.<br>
                     `AmazonEC2ContainerRegistryReadOnly` : Grants read-only access to Amazon ECR for downloading and running docker images.<br>
                     `AmazonEBSCSIDriverPolicy` : Enables the EKS worker nodes to use the EBS CSI driver for managing persistent volumes using EBS.<br>
+
+### ECR
+- **Amazon Elastic Container Registry** : A private repositories created manually to host Our_Library images
