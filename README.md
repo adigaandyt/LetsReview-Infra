@@ -89,4 +89,4 @@ IAM Roles get created in the code and resources assume them
                     `AmazonEBSCSIDriverPolicy` : Enables the EKS worker nodes to use the EBS CSI driver for managing persistent volumes using EBS.<br>
 
 ### ECR
-- **Amazon Elastic Container Registry** : A private repositories created manually to host Our_Library images
+- **Amazon Elastic Container Registry** : A private repository created manually to host Our_Library images
