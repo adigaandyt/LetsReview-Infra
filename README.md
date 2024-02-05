@@ -20,10 +20,10 @@ Before you begin, you will need:
 - `outputs.tf`: Outputs after the Terraform apply.
 
 ## Repository Modules
--`/argocd/`: Installs ArgoCD onto the EKS Cluster when the infrastructure goes up
--`/eks/`: Deploys and EKS Cluster and an IAM role and policies attached 
--`/network/`: Deploys a VPC and public subnets based on the input value
--`/nodes/`: Creates a node group of worker nodes and the necessary IAM roles and policies for them
+-`/argocd/`: Installs ArgoCD onto the EKS Cluster when the infrastructure goes up<br>
+-`/eks/`: Deploys and EKS Cluster and an IAM role and policies attached <br>
+-`/network/`: Deploys a VPC and public subnets based on the input value<br>
+-`/nodes/`: Creates a node group of worker nodes and the necessary IAM roles and policies for them<br>
 
 ## Getting Started
 in `providers.tf` "
