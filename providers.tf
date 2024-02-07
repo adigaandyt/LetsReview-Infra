@@ -34,12 +34,12 @@ provider "aws" {
   region                   = "eu-west-1" # Directly specify the region
   shared_config_files      = ["~/.aws/config"]
   shared_credentials_files = ["~/.aws/credentials"]
-  profile                  = "andyt-develeap"
+  profile                  = var.profile
   default_tags {
     tags = {
-      owner           = "andyt"
-      bootcamp        = "19"
-      expiration_date = "22-09-2024"
+      owner           = var.default_tags[0]
+      bootcamp        = var.default_tags[1]
+      expiration_date = var.default_tags[2]
     }
   }
 }
