@@ -36,28 +36,27 @@ backend "s3" {
     encrypt = true
   }
 ```
-2) Set region, credentials and tags
+2) Provide your own .tfvars file
 ```
-provider "aws" {
-  region                   = "eu-west-1" # Directly specify the region
-  shared_config_files      = ["~/.aws/config"]
-  shared_credentials_files = ["~/.aws/credentials"]
-  profile                  = "andyt-develeap"
-  default_tags {
-    tags = {
-      owner           = "andyt"
-      bootcamp        = "19"
-      expiration_date = "22-09-2024"
-    }
-  }
-}
+profile = "andyt-develeap"
+default_tags = ["andyt","19","22-09-2024"]
+name_prefix = "andy"
+subnet_count = 3
+availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+instance_types = ["t3a.medium"]
+vpc_cidr_block = "10.0.0.0/16"
+subnet_cidr_offset = 8
+argocd_values_filepath = "./argocd-files/argocd-values.yaml"
+ng_max_size = 3
+ng_min_size = 1
+ng_desired_size = 2
+ng_max_unavailable = 1 
 ```
-3) Update `main.tf` with your own values (will have a proper .tfvars files later on)
-4) Deploy
+3) Deploy
 ```
-terraform init
-terraform plan
-terraform apply
+terraform init 
+terraform plan -var-file=<your .tfvars file>
+terraform apply -var-file=<your .tfvars file>
 ```
 
 ## Architecture
