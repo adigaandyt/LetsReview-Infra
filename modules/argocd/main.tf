@@ -14,7 +14,7 @@ resource "helm_release" "argocd" {
   version          = "5.53.13" # Specify the version you want to use
 
   values = [
-    "${file(var.values_filepath)}"
+    "${file(var.argocd_values_filepath)}"
   ]
 
   depends_on = [
