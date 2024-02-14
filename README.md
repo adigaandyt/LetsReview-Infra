@@ -1,4 +1,4 @@
-# Infrastructure as Code for LetsReview
+# Infrastructure as Code for LetsReview (STILL A WORK IN PROGRESS)
 This repository contains Terraform configurations for provisioning and managing the cloud infrastructure (EKS) required by the [LetsReview](https://github.com/adigaandyt/LetsReview).
 It defines the infrastructure in a declarative manner, ensuring consistency, reproducibility, and version control for all cloud resources.
 Terraform Infrastructure as Code that deploys an EKS cluster and installs ArgoCD onto the cluster on deployment.
