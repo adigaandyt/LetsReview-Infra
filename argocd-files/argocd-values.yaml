@@ -7,17 +7,17 @@ configs:
     server.insecure: true
 
 # commented out to fix a bug, #>don't touch for now fix after interview
-# # access argo with ingress and https
-# server:
-#   ingress:
-#     enabled: true
-#     annotations:
-#       # cert-manager.io/cluster-issuer: "letsencrypt"
-#     ingressClassName: nginx
-#     hosts:
-#       - ourlibargo.ddns.net
-#     # tls:
-#     #   - hosts:
-#     #       - argocd.taskit.in
-#     #     secretName: ------
-#     # https: true
+# access argo with ingress and https
+server:
+  ingress:
+    enabled: true
+    annotations:
+      # cert-manager.io/cluster-issuer: "letsencrypt"
+    ingressClassName: nginx
+    hosts:
+      - ourlibargo.ddns.net
+    tls:
+      - hosts:
+          - ourlibargo.ddns.net
+        secretName: ------
+    https: true
