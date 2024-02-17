@@ -6,3 +6,12 @@ variable argocd_values_filepath {
 }
 
 
+variable "gitops_ssh_secret_arn" {
+  type        = string
+  description = "ARN of the AWS Secrets Manager secret containing the SSH private key for the GitOps repo"
+}
+
+variable "gitops_ssh_key_name" {
+  description = "The name of the SSH private key in the AWS Secrets Manager Secret (the key from the Key/Value pair)"
+  type        = string
+}

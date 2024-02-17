@@ -11,3 +11,5 @@ ng_max_size = 3
 ng_min_size = 1
 ng_desired_size = 2
 ng_max_unavailable = 1
+gitops_ssh_secret_arn = "arn:aws:secretsmanager:eu-west-1:644435390668:secret:LetsReviewGitOpsPrivateSSH-oXIzF2" 
+gitops_ssh_key_name = "privateSSH"

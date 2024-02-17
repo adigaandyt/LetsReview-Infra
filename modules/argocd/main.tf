@@ -22,13 +22,3 @@ resource "helm_release" "argocd" {
     kubernetes_secret.argocd_ssh_key # argo could be up before the secret and so it wouldn't be able to set the password
   ]
 }
-
-# manually uploaded private ssh key to AWS secret manager
-data "aws_secretsmanager_secret" "ssh_key" {
-  name = "argocd-ssh-key"
-}
-
-data "aws_secretsmanager_secret_version" "ssh_key_version" {
-  secret_id = data.aws_secretsmanager_secret.ssh_key.id
-}
-

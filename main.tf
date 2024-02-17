@@ -35,7 +35,8 @@ module "nodes" {
 module "argocd" {
   source          = "./modules/argocd"
   argocd_values_filepath = var.argocd_values_filepath
-
+  gitops_ssh_secret_arn = var.gitops_ssh_secret_arn
+  gitops_ssh_key_name = var.gitops_ssh_key_name
   depends_on = [
     module.eks
   ]

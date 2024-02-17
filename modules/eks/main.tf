@@ -35,5 +35,3 @@ resource "aws_eks_cluster" "mycluster" {
   # Cluster wont be created until the proper iam role is ready
   depends_on = [aws_iam_role_policy_attachment.myAmazonEKSClusterPolicy]
 }
-
-
