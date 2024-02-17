@@ -22,3 +22,9 @@ resource "helm_release" "argocd" {
     kubernetes_secret.argocd_ssh_key # argo could be up before the secret and so it wouldn't be able to set the password
   ]
 }
+
+resource "kubectl_manifest" "bootstrap_application" {
+  depends_on = [helm_release.argocd]
+
+  yaml_body = file(var.bootstrap_application_path)
+}

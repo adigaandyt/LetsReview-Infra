@@ -15,3 +15,16 @@ variable "gitops_ssh_key_name" {
   description = "The name of the SSH private key in the AWS Secrets Manager Secret (the key from the Key/Value pair)"
   type        = string
 }
+
+
+variable bootstrap_application_path {
+  type        = string
+  description = "Path to bootsrap application resource manifest"
+}
+
+//git@github.com:adigaandyt/ourlibrary_gitops.git
+
+variable gitops_repo_url {
+  type        = string
+  description = "The SSH URL of your GitOps repo"
+}

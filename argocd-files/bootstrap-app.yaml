@@ -1,0 +1,26 @@
+# Application manifest to bootstrap infrastructure at startup
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap-application
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:adigaandyt/ourlibrary_gitops.git
+    path: "."
+    targetRevision: HEAD
+    sshPrivateKeySecret:
+      name: argocd-ssh-key
+      key: sshPrivateKey
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true

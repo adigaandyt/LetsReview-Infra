@@ -12,4 +12,6 @@ ng_min_size = 1
 ng_desired_size = 2
 ng_max_unavailable = 1
 gitops_ssh_secret_arn = "arn:aws:secretsmanager:eu-west-1:644435390668:secret:LetsReviewGitOpsPrivateSSH-oXIzF2" 
-gitops_ssh_key_name = "privateSSH"
+gitops_ssh_key_name = "sshPrivateKey"
+bootstrap_application_path = "./argocd-files/bootstrap-app.yaml"
+gitops_repo_url = "git@github.com:adigaandyt/ourlibrary_gitops.git"

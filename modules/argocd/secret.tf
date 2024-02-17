@@ -1,5 +1,5 @@
 # Grab the SSH private key we uploaded manually
-data "aws_secretsmanager_secret_version" "gitops-ssh-key" {
+data "aws_secretsmanager_secret_version" "gitops_ssh_key" {
   secret_id = var.gitops_ssh_secret_arn  
 }
 
@@ -8,11 +8,19 @@ resource "kubernetes_secret" "argocd_ssh_key" {
   metadata {
     name      = "argocd-ssh-key"
     namespace = "argocd"
+    //argocd will not be able to access the secret without this label block
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
   }
 
-  # Use the key name to grab it's value
+  # Repo values
   data = {
-    (var.gitops_ssh_key_name)  = data.aws_secretsmanager_secret_version.gitops-ssh-key.secret_string
+    "sshPrivateKey" = data.aws_secretsmanager_secret_version.gitops_ssh_key.secret_string
+    "type"          = "git"
+    "url"           = "${var.gitops_repo_url}"
+    "name"          = "github"
+    "project"       = "*"
   }
 
   type = "Opaque"
