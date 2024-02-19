@@ -8,5 +8,11 @@ configs:
 server:
   ingress:
     enabled: true
+    # annotations:
+    #   cert-manager.io/cluster-issuer: "letsencrypt"
     ingressClassName: "nginx"
     hosts: ["ourlibargo.ddns.net"]
+    # tls:
+    #   - hosts: ["ourlibargo.ddns.net"]
+    #     secretName: argocd-server-tls
+    # https: true

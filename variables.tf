@@ -2,20 +2,20 @@
 variable "profile" {
   type        = string
   description = "AWS config profile"
-  default = "andyt-develeap"
+  default     = "andyt-develeap"
 }
 
 variable "default_tags" {
   type        = list(string)
   description = "Default tags for all resources. Format: [owner, bootcamp, expiration_date]"
-  default = ["andyt","19","22-09-2024"]
+  default     = ["andyt", "19", "22-09-2024"]
 }
 
 #>Network
 variable "vpc_cidr_block" {
   type        = string
   description = "Specifies the VPC CIDR block."
-  default = "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 variable "subnet_cidr_offset" {
@@ -44,7 +44,7 @@ variable "availability_zones" {
 variable "argocd_values_filepath" {
   type        = string
   description = "Path to ArgoCD's values.yaml"
-  default = "./argocd-files/argocd-values.yaml"
+  default     = "./argocd-files/argocd-values.yaml"
 }
 variable "gitops_ssh_secret_arn" {
   type        = string
@@ -54,11 +54,11 @@ variable "gitops_ssh_key_name" {
   description = "The name of the SSH private key in the AWS Secrets Manager Secret (the key from the Key/Value pair)"
   type        = string
 }
-variable bootstrap_application_path {
+variable "bootstrap_application_path" {
   type        = string
   description = "Path to bootsrap application resource manifest"
 }
-variable gitops_repo_url {
+variable "gitops_repo_url" {
   type        = string
   description = "The SSH URL of your GitOps repo"
 }
@@ -74,7 +74,7 @@ variable "ng_max_size" {
 variable "ng_min_size" {
   type        = number
   description = "Minimum number of EC2 instances maintained in the node group."
-  default = 1
+  default     = 1
 }
 variable "ng_desired_size" {
   type        = number
@@ -90,7 +90,7 @@ variable "ng_max_unavailable" {
 variable "instance_types" {
   type        = list(string)
   description = "List of instance types for the EKS node group."
-  default     = ["t3a.medium"] 
+  default     = ["t3a.medium"]
 }
 
 

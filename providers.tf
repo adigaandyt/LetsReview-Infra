@@ -45,17 +45,17 @@ provider "aws" {
 }
 
 resource "null_resource" "wait_for_eks" {
-  depends_on = [module.eks]  # Ensure that the null_resource waits for the eks module to complete
+  depends_on = [module.eks] # Ensure that the null_resource waits for the eks module to complete
 }
 # Fetch EKS cluster details
 data "aws_eks_cluster" "cluster" {
-  name = module.eks.cluster_name
-  depends_on = [null_resource.wait_for_eks] 
+  name       = module.eks.cluster_name
+  depends_on = [null_resource.wait_for_eks]
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_name
-  depends_on = [null_resource.wait_for_eks] 
+  name       = module.eks.cluster_name
+  depends_on = [null_resource.wait_for_eks]
 }
 
 # Assuming module.eks exposes cluster details like endpoint and CA certificate
