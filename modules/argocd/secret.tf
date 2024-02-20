@@ -25,3 +25,4 @@ resource "kubernetes_secret" "argocd_ssh_key" {
 
   type = "Opaque"
 }
+
