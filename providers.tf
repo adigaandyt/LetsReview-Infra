@@ -1,6 +1,3 @@
-
-
-
 terraform {
   required_providers {
     aws = {
@@ -29,9 +26,8 @@ terraform {
   }
 }
 
-# Configure the AWS Provider
 provider "aws" {
-  region                   = "eu-west-1" # Directly specify the region
+  region                   = "eu-west-1" 
   shared_config_files      = ["~/.aws/config"]
   shared_credentials_files = ["~/.aws/credentials"]
   profile                  = var.profile

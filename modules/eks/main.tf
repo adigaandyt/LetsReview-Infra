@@ -19,11 +19,13 @@ resource "aws_iam_role" "eksrole" {
 POLICY
 }
 
+# EKS Cluster Policy required for each cluster to manage nodes and loadbalancers
 resource "aws_iam_role_policy_attachment" "myAmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.eksrole.name
 }
 
+# Create an EKS Cluster
 resource "aws_eks_cluster" "mycluster" {
   name     = "${var.name_prefix}-cluster"
   role_arn = aws_iam_role.eksrole.arn

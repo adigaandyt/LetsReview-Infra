@@ -1,10 +1,7 @@
-#aws secretsmanager create-secret --name "argocd-ssh-key" --description "SSH Private Key for ArgoCD GitOps" --secret-string file:///home/andy/Develeap/freestyle/Task1_Argo/argo_key
-
 variable argocd_values_filepath {
   type        = string
   description = "Path to ArgoCD values.yaml containing admin password and ingress config"
 }
-
 
 variable "gitops_ssh_secret_arn" {
   type        = string
@@ -16,13 +13,10 @@ variable "gitops_ssh_key_name" {
   type        = string
 }
 
-
 variable bootstrap_application_path {
   type        = string
   description = "Path to bootsrap application resource manifest"
 }
-
-//git@github.com:adigaandyt/ourlibrary_gitops.git
 
 variable gitops_repo_url {
   type        = string
