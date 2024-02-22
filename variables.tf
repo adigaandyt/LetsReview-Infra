@@ -63,6 +63,10 @@ variable "gitops_repo_url" {
   description = "The SSH URL of your GitOps repo"
 }
 
+variable "database_secret_arn" {
+  type        = string
+  description = "ARN for AWS Secret Manager Secret containing database credentials"
+}
 #>Nodes
 
 #Maybe make this into an array like the tags

@@ -39,6 +39,7 @@ module "argocd" {
   gitops_ssh_key_name        = var.gitops_ssh_key_name
   bootstrap_application_path = var.bootstrap_application_path
   gitops_repo_url            = var.gitops_repo_url
+  database_secret_arn        = var.database_secret_arn
   depends_on = [
     module.eks
   ]

@@ -15,3 +15,4 @@ gitops_ssh_secret_arn      = "arn:aws:secretsmanager:eu-west-1:644435390668:secr
 gitops_ssh_key_name        = "sshPrivateKey"
 bootstrap_application_path = "./argocd-files/bootstrap-app.yaml"
 gitops_repo_url            = "git@github.com:adigaandyt/ourlibrary_gitops.git"
+database_secret_arn        = "arn:aws:secretsmanager:eu-west-1:644435390668:secret:LetsReviewMongoSecrets-pS2hFQ"
