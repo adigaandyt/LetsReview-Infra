@@ -8,11 +8,11 @@ terraform {
 }
 
 
-resource "kubernetes_namespace" "argocd" {
-  metadata {
-    name = "argocd"
-  }
-}
+# resource "kubernetes_namespace" "argocd" {
+#   metadata {
+#     name = "argocd"
+#   }
+# }
 
 # Helm Chart for ArgoCD to install on Cluster
 # TODO: Host chart on the repo
@@ -32,7 +32,6 @@ resource "helm_release" "argocd" {
 
   # Wait for namespace, SSH for Gitops Repo
   depends_on = [
-    kubernetes_namespace.argocd,
     kubernetes_secret.argocd_ssh_key 
   ]
 }
