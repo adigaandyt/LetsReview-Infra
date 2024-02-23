@@ -14,10 +14,14 @@ module "eks" {
   name_prefix = var.name_prefix
   subnet_ids  = module.network.subnet_ids
 
+    depends_on = [
+    module.network
+  ]
 }
 
 module "nodes" {
   source             = "./modules/nodes"
+
   name_prefix        = var.name_prefix
   eks_name           = module.eks.cluster_name
   subnet_ids         = module.network.subnet_ids
@@ -34,14 +38,15 @@ module "nodes" {
 
 module "argocd" {
   source                     = "./modules/argocd"
+
   argocd_values_filepath     = var.argocd_values_filepath
   gitops_ssh_secret_arn      = var.gitops_ssh_secret_arn
-  gitops_ssh_key_name        = var.gitops_ssh_key_name
   bootstrap_application_path = var.bootstrap_application_path
   gitops_repo_url            = var.gitops_repo_url
   database_secret_arn        = var.database_secret_arn
+
   depends_on = [
-    module.eks
+    module.nodes
   ]
 }
 

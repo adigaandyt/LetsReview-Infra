@@ -14,8 +14,6 @@ terraform {
 #   }
 # }
 
-# Helm Chart for ArgoCD to install on Cluster
-# TODO: Host chart on the repo
 resource "helm_release" "argocd" {
   name             = "argocd"
   namespace        = "argocd"
