@@ -1,8 +1,7 @@
-# Infrastructure as Code for LetsReview (STILL A WORK IN PROGRESS)
-This repository contains Terraform configurations for provisioning and managing the cloud infrastructure (EKS) required by the [LetsReview](https://github.com/adigaandyt/LetsReview).
+# Infrastructure as Code for LetsReview
+This repository contains Terraform configurations for provisioning and managing the cloud infrastructure (EKS) required by the [LetsReview](https://github.com/adigaandyt/LetsReview-App).
 It defines the infrastructure in a declarative manner, ensuring consistency, reproducibility, and version control for all cloud resources.
-Terraform Infrastructure as Code that deploys an EKS cluster and installs ArgoCD onto the cluster on deployment.
-It's a part of a CI/CD project for [LetsReview](https://github.com/adigaandyt/LetsReview) an app that gets deployed onto the EKS Cluster with [ArgoCD app of apps repo](https://github.com/adigaandyt/ourlibrary_gitops)
+Terraform Infrastructure as Code that deploys an EKS cluster and installs [ArgoCD](https://github.com/adigaandyt/LetsReview-GitOps) onto the cluster on deployment which is used for GitOps with an app of apps pattern.
 
 ## Prerequisites
 Before you begin, you will need:
@@ -12,18 +11,22 @@ Before you begin, you will need:
 - An AWS account
 
 ## Repository Structure
+-  `/argocd-files/argocd-values.yaml`: Holds values for ArgoCD that gets installed when the infrastructure gets built
+-  `/argocd-files/bootstrap-app.yaml`: an application resource to point ArgoCD to the GitOps repo to bootstraps our application automatically, you can replace the repoURL with your own GitOps repo
 - `/modules`: Reusable Terraform modules for various infrastructure components.
-- `/argocd-files`: Holds values for ArgoCD that gets installed when the infrastructure gets built 
 - `main.tf`: The main Terraform configuration file that ties everything together.
 - `providers.tf`: Defines the required Terraform providers for AWS, Kubernetes, Helm, and Kubectl.
 - `variables.tf`: Definition of variables used in the configurations.
 - `outputs.tf`: Outputs after the Terraform apply.
 
 ## Repository Modules
--`/argocd/`: Installs ArgoCD onto the EKS Cluster when the infrastructure goes up<br>
--`/eks/`: Deploys and EKS Cluster and an IAM role and policies attached <br>
--`/network/`: Deploys a VPC and public subnets based on the input value<br>
--`/nodes/`: Creates a node group of worker nodes and the necessary IAM roles and policies for them<br>
+- `/argocd/`: Installs ArgoCD onto the EKS Cluster when the infrastructure goes up, also creates 2 Kuberenets secrets<br>
+> 1) `secret.tf` : fetches a secret from AWS Secret Manger which is the SSH key for the GitOps repo then creates a kubernetes secret with it <br>
+> 2) `db-secret.tf` : fetches a secret from AWS Secret Manger and creates a kubernetes secret holding the login data for the database<br>
+
+- `/eks/`: Deploys and EKS Cluster and an IAM role and policies attached <br>
+- `/network/`: Deploys a VPC and public subnets based on the input value<br>
+- `/nodes/`: Creates a node group of worker nodes and the necessary IAM roles and policies for them<br>
 
 ## Getting Started
 in `providers.tf` "
@@ -42,16 +45,7 @@ backend "s3" {
 profile = "andyt-develeap"
 default_tags = ["andyt","19","22-09-2024"]
 name_prefix = "andy"
-subnet_count = 3
-availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
-instance_types = ["t3a.medium"]
-vpc_cidr_block = "10.0.0.0/16"
-subnet_cidr_offset = 8
-argocd_values_filepath = "./argocd-files/argocd-values.yaml"
-ng_max_size = 3
-ng_min_size = 1
-ng_desired_size = 2
-ng_max_unavailable = 1 
+etc...
 ```
 3) Deploy
 ```
