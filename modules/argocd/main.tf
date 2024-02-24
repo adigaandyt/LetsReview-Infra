@@ -8,11 +8,11 @@ terraform {
 }
 
 
-# resource "kubernetes_namespace" "argocd" {
-#   metadata {
-#     name = "argocd"
-#   }
-# }
+resource "kubernetes_namespace" "argocd_namespace" {
+  metadata {
+    name = "argocd"
+  }
+}
 
 resource "helm_release" "argocd" {
   name             = "argocd"
@@ -30,6 +30,7 @@ resource "helm_release" "argocd" {
 
   # Wait for namespace, SSH for Gitops Repo
   depends_on = [
+    kubernetes_namespace.argocd_namespace,
     kubernetes_secret.argocd_ssh_key 
   ]
 }

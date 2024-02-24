@@ -4,13 +4,13 @@ data "aws_secretsmanager_secret_version" "aws_mongodb_secret" {
 }
 
 # we have to create the namespace to host the secret on boot
-resource "kubernetes_namespace" "argocd" {
+resource "kubernetes_namespace" "letsreview_namespace" {
   metadata {
     name = "letsreview"
   }
 }
 
-# Create a kubernetes secret for the SSH key so our ArgoCD can grab it
+# Create a kubernetes secret for the SSH key so our letsreview_namespace can grab it
 resource "kubernetes_secret" "mongodb_cluster_secret" {
   metadata {
     name      = "external-db-secrets"
