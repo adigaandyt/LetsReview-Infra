@@ -77,10 +77,10 @@ IAM Roles get created in the code and resources assume them
   
 - **Worker Node Role** : `nodes/main.tf -> nodes` IAM role for EC2 worker nodes to interact with AWS services<br>
   *Policies Attached*:<br>
-                    `AmazonEKSWorkerNodePolicy` : Provides permissions for EKS worker nodes to make calls to AWS APIs.<br>
-                    `AmazonEKS_CNI_Policy` : Allows the worker nodes to manage networking resources for pods using the Amazon VPC CNI plugin.<br>
-                    `AmazonEC2ContainerRegistryReadOnly` : Grants read-only access to Amazon ECR for downloading and running docker images.<br>
-                    `AmazonEBSCSIDriverPolicy` : Enables the EKS worker nodes to use the EBS CSI driver for managing persistent volumes using EBS.<br>
+      -   `AmazonEKSWorkerNodePolicy` : Provides permissions for EKS worker nodes to make calls to AWS APIs.<br>
+      -   `AmazonEKS_CNI_Policy` : Allows the worker nodes to manage networking resources for pods using the Amazon VPC CNI plugin.<br>
+      -   `AmazonEC2ContainerRegistryReadOnly` : Grants read-only access to Amazon ECR for downloading and running docker images.<br>
+      -   `AmazonEBSCSIDriverPolicy` : Enables the EKS worker nodes to use the EBS CSI driver for managing persistent volumes using EBS.<br>
 
 ### ECR
 - **Amazon Elastic Container Registry** : A private repository created manually to host Our_Library images
