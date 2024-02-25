@@ -19,13 +19,11 @@ resource "kubernetes_secret" "mongodb_cluster_secret" {
 
 
   data = {
-    mongodb-passwords       = jsondecode(data.aws_secretsmanager_secret_version.aws_mongodb_secret.secret_string)["mongodb-passwords"]
-    mongodb-root-password   = jsondecode(data.aws_secretsmanager_secret_version.aws_mongodb_secret.secret_string)["mongodb-root-password"]
-    mongodb-replica-set-key = jsondecode(data.aws_secretsmanager_secret_version.aws_mongodb_secret.secret_string)["mongodb-replica-set-key"]
-    MONGO_URL               = jsondecode(data.aws_secretsmanager_secret_version.aws_mongodb_secret.secret_string)["MONGO_URL"]
-    db_name                 = jsondecode(data.aws_secretsmanager_secret_version.aws_mongodb_secret.secret_string)["db_name"]
+    mongodb-passwords  = jsondecode(data.aws_secretsmanager_secret_version.petdate_db_secret.secret_string)["MONGO_PASSWORD"]
+    mongo-url = jsondecode(data.aws_secretsmanager_secret_version.petdate_db_secret.secret_string)["MONGO_URL"]
+    mongodb-root-password = jsondecode(data.aws_secretsmanager_secret_version.petdate_db_secret.secret_string)["mongodb-root-password"]
+    mongodb-replica-set-key = jsondecode(data.aws_secretsmanager_secret_version.petdate_db_secret.secret_string)["mongodb-replica-set-key"]
   }
-
   type = "Opaque"
 }
 
