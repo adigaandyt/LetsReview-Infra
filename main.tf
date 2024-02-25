@@ -14,13 +14,13 @@ module "eks" {
   name_prefix = var.name_prefix
   subnet_ids  = module.network.subnet_ids
 
-    depends_on = [
+  depends_on = [
     module.network
   ]
 }
 
 module "nodes" {
-  source             = "./modules/nodes"
+  source = "./modules/nodes"
 
   name_prefix        = var.name_prefix
   eks_name           = module.eks.cluster_name
@@ -37,7 +37,7 @@ module "nodes" {
 }
 
 module "argocd" {
-  source                     = "./modules/argocd"
+  source = "./modules/argocd"
 
   argocd_values_filepath     = var.argocd_values_filepath
   gitops_ssh_secret_arn      = var.gitops_ssh_secret_arn
