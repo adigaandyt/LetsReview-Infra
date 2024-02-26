@@ -9,4 +9,5 @@ server:
   ingress:
     enabled: true
     ingressClassName: "nginx"
-    hosts: ["ourlibargo.ddns.net"]
+    hosts: ["ourlib.ddns.net"]
+    path: /argo
