@@ -9,4 +9,4 @@ server:
   ingress:
     enabled: true
     ingressClassName: "nginx"
-    hosts: ["ourlib.ddns.net"]
+    hosts: ["ourlibargo.ddns.net"]
