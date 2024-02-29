@@ -10,3 +10,10 @@ server:
     enabled: true
     ingressClassName: "nginx"
     hosts: ["letsreview-argo.ddns.net"]
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt"
+    tls:
+      - hosts:
+          - letsreview-argo.ddns.net
+        secretName: argocd-tls
+    https: true
